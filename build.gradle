@@ -1,0 +1,44 @@
+// For creating metadata files for Eclipse and IntelliJ IDEA.
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+// Dependencies for this project.
+// Will be playing with JodaTime too.
+dependencies {
+    def guavaVersion = '15.0'
+    def jodaTimeVersion = '2.3'
+    def junitVersion = '4.11'
+    compile group: 'com.google.guava', name: 'guava', version: guavaVersion
+    compile group: 'joda-time', name: 'joda-time', version: jodaTimeVersion
+
+    testCompile group: 'junit', name: 'junit', version: junitVersion
+}
+
+// For creating the initial skeleton of this project.
+task initProject() << {
+    if (hasProperty(initPlugins)) {
+        initPlugins.split(',').each { plug ->
+            project.apply {
+                plugin(plug.trim())
+            }
+        }
+    }
+    project.sourceSets*.allSource.srcDirTrees.flatten().dir.each { dir ->
+        dir.mkdirs()
+    }
+}
+
+//Infrastructure for testcase related logging.
+test {
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', "skipped", "failed", 'passed'
+        // Logging the complete exception stacktrace, if any.
+        exceptionFormat 'full'
+    }
+}
