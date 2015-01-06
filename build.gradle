@@ -10,9 +10,9 @@ repositories {
 // Dependencies for this project.
 // Will be playing with JodaTime too.
 dependencies {
-    def guavaVersion = '15.0'
-    def jodaTimeVersion = '2.3'
-    def junitVersion = '4.11'
+    def guavaVersion = '18.0'
+    def jodaTimeVersion = '2.6'
+    def junitVersion = '4.12'
     compile group: 'com.google.guava', name: 'guava', version: guavaVersion
     compile group: 'joda-time', name: 'joda-time', version: jodaTimeVersion
 
@@ -42,3 +42,4 @@ test {
         exceptionFormat 'full'
     }
 }
+defaultTasks 'clean', 'test'
