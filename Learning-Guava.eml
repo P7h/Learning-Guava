@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component inherit-compiler-output="true" inheritJdk="true">
-	<output-test url="file://$MODULE_DIR$/out/test/Learning-Guava"/>
-	<exclude-output/>
+<component inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/build/classes/test"/>
 	<contentEntry url="file://$MODULE_DIR$">
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<testFolder url="file://$MODULE_DIR$/src/test/resources"/>
 		<excludeFolder url="file://$MODULE_DIR$/.gradle"/>
 		<excludeFolder url="file://$MODULE_DIR$/build"/>
 	</contentEntry>
-	<lib name="C:\Warez\IDEs\IDEA12\lib\junit-4.10.jar" scope="TEST"/>
+	<lib name="Gradle: junit:junit:4.12" scope="TEST"/>
+	<lib name="Gradle: org.hamcrest:hamcrest-core:1.3" scope="TEST"/>
 	<levels>
-		<level name="joda-time-2.3" value="project"/>
-		<level name="guava-15.0" value="project"/>
+		<level name="Gradle: com.google.guava:guava:18.0" value="project"/>
+		<level name="Gradle: joda-time:joda-time:2.6" value="project"/>
+		<level name="Gradle: junit:junit:4.12" value="project"/>
+		<level name="Gradle: org.hamcrest:hamcrest-core:1.3" value="project"/>
 	</levels>
 </component>
