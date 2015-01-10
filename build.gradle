@@ -1,14 +1,20 @@
+import org.gradle.internal.jvm.Jvm
+
 // For creating metadata files for Eclipse and IntelliJ IDEA.
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+def PROJECT_TASK_GROUP = "Project specific custom"
 
 repositories {
     mavenCentral()
 }
 
 // Dependencies for this project.
-// Will be playing with JodaTime too.
+// Will be playing with JodaTime, if time permits.
 dependencies {
     def guavaVersion = '18.0'
     def jodaTimeVersion = '2.6'
@@ -33,6 +39,22 @@ task initProject() << {
     }
 }
 
+def decorate() {
+    for (i in 0..58) {
+        print '='
+    }
+    println ""
+}
+
+task versions() {
+    group = PROJECT_TASK_GROUP
+    description = '*Custom Task*: Prints the JDK and Gradle versions used by this script.'
+    decorate()
+    println "*** Using Java v${Jvm.current()} ***"
+    println "*** Using Gradle v${GradleVersion.current().version} ***"
+    decorate()
+}
+
 //Infrastructure for testcase related logging.
 test {
     testLogging {
@@ -42,4 +64,8 @@ test {
         exceptionFormat 'full'
     }
 }
+
+clean.dependsOn versions
+compileJava.dependsOn clean
+
 defaultTasks 'clean', 'test'

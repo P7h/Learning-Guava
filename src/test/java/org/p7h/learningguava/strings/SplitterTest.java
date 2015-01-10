@@ -14,8 +14,12 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Test Class and snippets for Splitter Class.
- * Guava Splitter API: http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Splitter.html
- * Guava Splitter Userguide: https://code.google.com/p/guava-libraries/wiki/StringsExplained
+ *
+ * <p>See the Guava Splitter User Guide article on <a href=
+ * "http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Splitter.html">Splitter</a>.
+ *
+ * <p>Also check the Guava Splitter User Guide article on <a href=
+ * "https://code.google.com/p/guava-libraries/wiki/StringsExplained#Splitter">Splitter</a>.
  *
  * @author Prashanth Babu.
  */
@@ -26,12 +30,12 @@ public class SplitterTest {
      */
     @Test
     public void testSplitToList() {
-        final String numberList = "One,Two,Three,Four,Five,Six,Seven,Eight,Nine";
+        final String numberList = "Scala,Groovy,Go,C,C++,Clojure";
         List<String> list = Splitter.on(',')
                 .splitToList(numberList);
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(9, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Groovy", "Go", "C", "C++", "Clojure");
+        assertEquals(6, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -40,13 +44,13 @@ public class SplitterTest {
      */
     @Test
     public void testSplitToListOmitEmpty() {
-        final String numberList = "One,,Three,Four,Five,Six,Seven,Eight,Nine";
+        final String numberList = "Scala,,Go,C,C++,Clojure";
         List<String> list = Splitter.on(',')
                 .omitEmptyStrings()
                 .splitToList(numberList);
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(8, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Go", "C", "C++", "Clojure");
+        assertEquals(5, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -55,13 +59,13 @@ public class SplitterTest {
      */
     @Test
     public void testSplitToListTrim() {
-        final String numberList = "One,Two,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,Groovy,Go,C,C++,  Clojure ";
         List<String> list = Splitter.on(',')
                 .trimResults()
                 .splitToList(numberList);
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(9, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Groovy", "Go", "C", "C++", "Clojure");
+        assertEquals(6, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -70,14 +74,14 @@ public class SplitterTest {
      */
     @Test
     public void testSplitToListTrimAndOmitEmpty() {
-        final String numberList = "One,  ,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,  ,Go,C,C++,  Clojure ";
         List<String> list = Splitter.on(',')
                 .omitEmptyStrings()
                 .trimResults()
                 .splitToList(numberList);
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(8, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Go", "C", "C++", "Clojure");
+        assertEquals(5, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -86,14 +90,14 @@ public class SplitterTest {
      */
     @Test
     public void testSplitToListTrimAndOmitEmptyAndLimit() {
-        final String numberList = "One,  ,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,  ,Go,C,C++,  Clojure ";
         List<String> list = Splitter.on(',')
                 .limit(4)
                 .omitEmptyStrings()
                 .trimResults()
                 .splitToList(numberList);
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Three", "Four", "Five,Six,Seven,Eight,   Nine");
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Go", "C", "C++,  Clojure");
         assertEquals(4, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
@@ -105,12 +109,12 @@ public class SplitterTest {
      */
     @Test
     public void testSplit() {
-        final String numberList = "One,Two,Three,Four,Five,Six,Seven,Eight,Nine";
+        final String numberList = "Scala,Groovy,Go,C,C++,Clojure";
         List<String> list = Lists.newArrayList(Splitter.on(',')
                 .split(numberList));
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(9, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Groovy", "Go", "C", "C++", "Clojure");
+        assertEquals(6, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -119,13 +123,13 @@ public class SplitterTest {
      */
     @Test
     public void testSplitTrim() {
-        final String numberList = "One,Two,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,Groovy,Go,C,C++,  Clojure ";
         List<String> list = Lists.newArrayList(Splitter.on(',')
                 .trimResults()
                 .split(numberList));
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(9, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Groovy", "Go", "C", "C++", "Clojure");
+        assertEquals(6, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -134,14 +138,14 @@ public class SplitterTest {
      */
     @Test
     public void testSplitTrimAndOmitEmpty() {
-        final String numberList = "One,  ,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,  ,Go,C,C++,  Clojure ";
         List<String> list = Lists.newArrayList(Splitter.on(',')
                 .omitEmptyStrings()
                 .trimResults()
                 .split(numberList));
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
-        assertEquals(8, list.size());
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Go", "C", "C++", "Clojure");
+        assertEquals(5, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
@@ -150,20 +154,21 @@ public class SplitterTest {
      */
     @Test
     public void testSplitTrimAndOmitEmptyAndLimit() {
-        final String numberList = "One,  ,Three,Four,Five,Six,Seven,Eight,   Nine  ";
+        final String numberList = "Scala,  ,Go,C,C++,  Clojure ";
         List<String> list = Lists.newArrayList(Splitter.on(',')
                 .limit(4)
                 .omitEmptyStrings()
                 .trimResults()
                 .split(numberList));
         Set<String> rolesSet = ImmutableSet.copyOf(list);
-        ImmutableSet<String> expectedSet = ImmutableSet.of("One", "Three", "Four", "Five,Six,Seven,Eight,   Nine");
+        ImmutableSet<String> expectedSet = ImmutableSet.of("Scala", "Go", "C", "C++,  Clojure");
         assertEquals(4, list.size());
         assertTrue(rolesSet.containsAll(expectedSet));
     }
 
     /**
      * Test Splitter's testSplitToMap().
+     *
      * @link(http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/base/Splitter.html#withKeyValueSeparator(char))
      */
     @Test
