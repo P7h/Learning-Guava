@@ -72,4 +72,18 @@ public class JoinerTest {
                 .join(progLangAndItsCreatorMap);
         assertEquals("Scala=Odersky,Go=Pike,C=Ritchie,C++=Stroustrup,Clojure=Hickey", progLangAndItsCreatorString);
     }
+
+    /**
+     * Test basic method of Joiner ie appendTo().
+     */
+    @Test
+    public void testJoinWithStringBuilder() {
+         final List<String> numberList = Lists.newArrayList("One", null, "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine");
+         final StringBuilder stringBuilder = new StringBuilder();
+
+        Joiner.on(",")
+                .useForNull("-")
+                .appendTo(stringBuilder, numberList);
+        assertEquals("One,-,Three,Four,Five,Six,Seven,Eight,Nine", stringBuilder.toString());
+    }
 }
