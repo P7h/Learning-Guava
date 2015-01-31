@@ -27,7 +27,8 @@ This project was developed in [IntelliJ IDEA](http://www.jetbrains.com/idea). Bu
 Following are the classes I have developed till now.<br>
 
 1. [SplitterTest](src/test/java/org/p7h/learningguava/strings/SplitterTest.java)
-2. [JoinerTest](src/test/java/org/p7h/learningguava/strings/JoinerTest.java)
+1. [JoinerTest](src/test/java/org/p7h/learningguava/strings/JoinerTest.java)
+1. [BimapTest](src/test/java/org/p7h/learningguava/collections/BiMapTest.java)
 
 Please feel free to check out the source code and run some tests to get to know and also appreciate Guava for its simplicity, elegance and power. 
 
