@@ -9,10 +9,10 @@ import static org.junit.Assert.assertTrue;
 /**
  * Test Class and snippets for BiMap Class.
  *
- * <p>See the Guava Splitter User Guide article on <a href=
+ * <p>See the Guava BiMap User Guide article on <a href=
  * "http://docs.guava-libraries.googlecode.com/git/javadoc/com/google/common/collect/BiMap.html">BiMap</a>.
  *
- * <p>Also check the Guava Bimap User Guide article on <a href=
+ * <p>Also check the Guava BiMap User Guide article on <a href=
  * "https://code.google.com/p/guava-libraries/wiki/NewCollectionTypesExplained#BiMap">BiMap</a>.
  *
  * @author Prashanth Babu.
