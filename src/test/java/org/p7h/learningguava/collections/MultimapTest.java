@@ -33,4 +33,20 @@ public class MultimapTest {
         mapForLanguagesAndInventors.put("Hickey", "Clojure");
         assertEquals(2, mapForLanguagesAndInventors.get("Odersky").size());
     }
+
+    /**
+     * Test basic usage of Multimap and eliminate duplicates.
+     */
+    @Test
+    public void testMultimapSansDups() {
+        Multimap<String, String> mapForLanguagesAndInventors = HashMultimap.create();
+        mapForLanguagesAndInventors.put("Odersky", "Scala");
+        mapForLanguagesAndInventors.put("Odersky", "Generics Compiler");
+        mapForLanguagesAndInventors.put("Pike", "Go");
+        mapForLanguagesAndInventors.put("Ritchie", "C");
+        mapForLanguagesAndInventors.put("Odersky", "Scala");
+        mapForLanguagesAndInventors.put("Pike", "Go");
+        assertEquals(2, mapForLanguagesAndInventors.get("Odersky").size());
+        assertEquals(1, mapForLanguagesAndInventors.get("Pike").size());
+    }
 }
